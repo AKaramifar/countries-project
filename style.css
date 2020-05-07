@@ -86,18 +86,22 @@
     border-top-right-radius: 3px;
 }
 .countryNameSmallView_P_CSS{
+    font-size: 13px;
     margin-left: 15px;
     font-weight: bold;
 }
 .countryPopulationSmallView_P_CSS{
     margin-left: 15px;
-    font-weight: bold;
+    font-weight: 400;
 }
 .countryRegionSmallView_P_CSS{
     margin-left: 15px;
-    font-weight: bold;
+    font-weight: 400;
 }
 .countryCapitaSmallView_P_CSS{
     margin-left: 15px;
-    font-weight: bold;
+    font-weight: 500;
+}
+strong{
+    font-weight: 800; 
 }

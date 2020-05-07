@@ -135,10 +135,10 @@ function makeMainCountriesContainer() {
 
     // Fill out elements with data
     countryImageSmallView_Img_EL.src = `${countries.flag}`;
-    countryNameSmallView_P_EL.textContent = `${countries.name}`;
-    countryPopulationSmallView_P_EL.textContent = `Population: ${countries.population}`;
-    countryRegionSmallView_P_EL.textContent = `Region: ${countries.region}`;
-    countryCapitaSmallView_P_EL.textContent = `Capital: ${countries.capital}`;
+    countryNameSmallView_P_EL.innerHTML = `<strong>${countries.name}</strong>`;
+    countryPopulationSmallView_P_EL.innerHTML = `<strong>Population: </strong>${countries.population}`;
+    countryRegionSmallView_P_EL.innerHTML = `<strong>Region: </strong>${countries.region}`;
+    countryCapitaSmallView_P_EL.innerHTML = `<strong>Capital: </strong>${countries.capital}`;
 
     // Show all countries on page
     ListOfAllCountriesContainer_Div_EL.appendChild(countryContainerSmallView_Div_EL);
