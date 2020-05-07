@@ -65,7 +65,7 @@ function makeHeaderContainer() {
   headerContainer_Div_EL.appendChild(darkMode_P_EL);
 
   // Fetch API Date from
-  fetch("http://restcountries.eu/rest/v2/all")
+  fetch("https://restcountries.eu/rest/v2/all")
     .then((res) => {
       if (res.status >= 400) {
         throw new Error("Bad response from server");
