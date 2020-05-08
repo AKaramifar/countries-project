@@ -117,7 +117,6 @@ function makeMainCountriesContainer() {
     allRegoin.push(countries.region);        
     showCountries(countries, index);
   }) 
-  console.log(currentCuntrytoShow)     
   allRegoin = allRegoin.filter((elem, index, self)=> {
       return index === self.indexOf(elem);
   })
@@ -179,8 +178,7 @@ function searchCountries(country){
   allCounteries.forEach((countries, index)=>{
     if(countries.name.toLowerCase().indexOf(country.toLowerCase()) > -1)
     showCountries(countries, index); 
-  })
-  console.log(currentCuntrytoShow)     
+  })   
 }
 
 function allEvents(){  
