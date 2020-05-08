@@ -250,6 +250,7 @@ function allEvents(){
 
   filterByRegoin_Select_EL.addEventListener('change', ()=>{
     ListOfAllCountriesContainer_Div_EL.innerHTML = '';
+    searchCountries_Input_EL.value = '';
     currentCuntrytoShow = []
     allCounteries.forEach((countries, index)=>{
       if(countries.region == filterByRegoin_Select_EL.value){
