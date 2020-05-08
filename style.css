@@ -1,37 +1,83 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap");
-.body_lightMode_CSS {
-  background-color: #f1f2f6;
+@keyframes FadeIn{
+  from{
+      opacity: 0;
+  }
+  to{
+      opacity: 1
+  }
+}
+.body_CSS {  
   width: 100%;
   height: 100%;
   margin: 0px;
+  transition: 200ms;
   font-family: "Nunito Sans", sans-serif;
+  animation: FadeIn 1s;
   overflow: overlay;
 }
-.container_Div_lightMode_CSS {
+::-webkit-scrollbar{
+  width: 5px;  
+}
+::-webkit-scrollbar-thumb{
+  border-radius: 5px;
+}
+.body_lightMode_CSS{
+  background-color: hsl(0, 0%, 98%);
+}
+.body_darkMode_CSS{
+  background-color:hsl(207, 26%, 17%)
+}
+
+.container_CSS {
   width: 100%;
   height: 100%;
 }
-.headerContainer_Div_lightMode_CSS {
+.headerContainer_Div_CSS {
   width: 100%;
   height: 80px;
-  background-color: white;
   margin-top: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: 200ms;
+}
+.headerContainer_Div_lightMode_CSS {
+  background-color: hsl(0, 0%, 100%);
   box-shadow: 0px 0px 3px rgb(148, 148, 148);
 }
-.headerLabel_P_lightMode_CSS {
-  color: black;
+
+.headerContainer_Div_darkMode_CSS {
+  background-color: hsl(209, 23%, 22%);
+  box-shadow: 0px 0px 3px rgb(37, 37, 37);
+}
+.headerLabel_P_CSS {  
   font-size: 20px;
   font-weight: bolder;
   margin-left: 100px;
+  transition: 200ms;
+}
+.headerLabel_P_lightMode_CSS{
+  color: hsl(200, 15%, 8%);
+}
+.headerLabel_P_darkMode_CSS{
+  color: hsl(0, 0%, 100%);
 }
 .darkMode_P_CSS {
-  color: black;
+  color: hsl(0, 0%, 100%);
   font-size: 16px;
   font-weight: bold;
   margin-right: 120px;
+  transition: 200ms;
+}
+.darkMode_P_CSS:hover{
+  cursor: pointer;
+}
+.darkMode_P_lightMode_CSS{
+  color: hsl(200, 15%, 8%);  
+}
+.darkMode_P_darkMode_CSS{
+  color: hsl(0, 0%, 100%); 
 }
 /* -------------------------------------------- */
 .mainCountriesContainer_Div_CSS {
@@ -50,8 +96,18 @@
     margin-left: 105px;
     border-radius: 3px;
     border: none;
-    text-indent: 30px;
-    box-shadow: 0px 0px 3px 0.1px rgb(192, 192, 192);
+    text-indent: 30px;   
+    transition: 200ms; 
+}
+.searchCountries_Input_lightMode_CSS{
+  background-color: hsl(0, 0%, 100%); 
+  color: hsl(200, 15%, 8%); 
+  box-shadow: 0px 0px 3px 0.1px rgb(192, 192, 192);
+}
+.searchCountries_Input_darkMode_CSS{
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%); 
+  box-shadow: 0px 0px 3px 0.1px rgb(37, 37, 37);
 }
 .filterByRegoin_Select_CSS{
     width: 170px;
@@ -59,7 +115,19 @@
     border-radius: 3px;
     border: none;
     margin-right: 120px;
-    box-shadow: 0px 0px 3px 0.1px rgb(192, 192, 192);
+    text-indent: 15px;
+    transition: 200ms;
+}
+
+.filterByRegoin_Select_lightMode_CSS{
+  background-color: hsl(0, 0%, 100%); 
+  color: hsl(200, 15%, 8%); 
+  box-shadow: 0px 0px 3px 0.1px rgb(192, 192, 192);
+}
+.filterByRegoin_Select_darkMode_CSS{
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+  box-shadow: 0px 0px 3px 0.1px rgb(37, 37, 37);
 }
 .ListOfAllCountriesContainer_Div_CSS{
     width: 80%;
@@ -75,8 +143,21 @@
     width:220px;
     height: 280px;
     margin: 25px 25px 25px 25px;
-    background-color: white;
     border-radius: 3px;
+    animation: FadeIn 1s;
+    transition: 200ms;
+}
+.countryContainerSmallView_Div_CSS:hover{
+  transform: scale(1.08);
+  cursor: pointer;
+}
+.countryContainerSmallView_Div_lightMode_CSS{
+  background-color: hsl(0, 0%, 100%); 
+  color: hsl(200, 15%, 8%)
+}
+.countryContainerSmallView_Div_darkMode_CSS{
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
 }
 .countryImageSmallView_Img_CSS{
     width: 220px;
@@ -88,7 +169,7 @@
 .countryNameSmallView_P_CSS{
     font-size: 13px;
     margin-left: 15px;
-    font-weight: bold;
+    font-weight: bold;    
 }
 .countryPopulationSmallView_P_CSS{
     margin-left: 15px;
