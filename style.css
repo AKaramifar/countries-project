@@ -11,9 +11,9 @@
   width: 100%;
   height: 100%;
   margin: 0px;
-  transition: 200ms;
-  font-family: "Nunito Sans", sans-serif;
-  animation: FadeIn 1s;
+  /* transition: 200ms; */
+  font-family: "Nunito Sans", sans-serif;  
+  background-color:hsl(207, 26%, 17%);
   overflow: overlay;
 }
 ::-webkit-scrollbar{
@@ -32,6 +32,9 @@
 .container_CSS {
   width: 100%;
   height: 100%;
+  transition: 200ms;
+  background-color:hsl(207, 26%, 17%);
+  
 }
 .headerContainer_Div_CSS {
   width: 100%;
@@ -40,11 +43,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  animation: FadeIn 1s;
   transition: 200ms;
 }
 .headerContainer_Div_lightMode_CSS {
   background-color: hsl(0, 0%, 100%);
   box-shadow: 0px 0px 3px rgb(148, 148, 148);
+  box-shadow: 0px 0px 3px 1px rgb(248, 43, 43);
 }
 
 .headerContainer_Div_darkMode_CSS {
@@ -82,7 +87,16 @@
 /* -------------------------------------------- */
 .mainCountriesContainer_Div_CSS {
   width: 100%;
+  height: 100vh;
+  transition: 200ms;
 }
+.mainCountriesContainer_Div_lightMode_CSS {
+  background-color: hsl(0, 0%, 98%);
+}
+.mainCountriesContainer_Div_darkMode_CSS {
+  background-color:hsl(207, 26%, 17%)
+}
+
 .findCountriesTools_Div_CSS{
     width: 100%;
     height: 100Px;
@@ -131,7 +145,7 @@
 }
 .ListOfAllCountriesContainer_Div_CSS{
     width: 80%;
-    min-height: 100px;
+    height: 100vh;
     margin-left: 10%;
     display: flex;
     flex-wrap: wrap;
