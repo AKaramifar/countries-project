@@ -33,13 +33,13 @@ function publicVariables() {
   allCounteries;    
 }
 let allRegoin = [];
-let themMode = 'Dark Mode';
+let themMode = 'Light Mode';
 let currentCuntrytoShow = [];
 function makeHeaderContainer() {
   // Assign Id and Class to body
   body_EL = document.querySelector("body");
   body_EL.id = "body_JS";
-  body_EL.classList = "body_CSS body_darkMode_CSS";
+  body_EL.classList = "body_CSS body_lightMode_CSS";
 
   // Main container for whole page
   container_Div_EL = document.createElement("div");
@@ -54,13 +54,13 @@ function makeHeaderContainer() {
 
   // Assign Id and Class to element's
   headerContainer_Div_EL.id = "headerContainer_Div_JS";
-  headerContainer_Div_EL.classList = "headerContainer_Div_CSS headerContainer_Div_darkMode_CSS";
+  headerContainer_Div_EL.classList = "headerContainer_Div_CSS headerContainer_Div_lightMode_CSS";
   headerLabel_P_EL.id = "headerLabel_P_JS";
-  headerLabel_P_EL.classList = "headerLabel_P_CSS headerLabel_P_darkMode_CSS";
+  headerLabel_P_EL.classList = "headerLabel_P_CSS headerLabel_P_lightMode_CSS";
   headerLabel_P_EL.textContent = "Where in the world?";
   darkMode_P_EL.id = "darkMode_P_JS";
-  darkMode_P_EL.classList = "darkMode_P_CSS darkMode_P_darkMode_CSS";
-  darkMode_P_EL.innerHTML = '<i class="far fa-sun"></i> Light Mode';
+  darkMode_P_EL.classList = "darkMode_P_CSS darkMode_P_lightMode_CSS";
+  darkMode_P_EL.innerHTML = '<i class="far fa-moon"></i> Dark Mode';
 
   // Add header element's to main container
   container_Div_EL.appendChild(headerContainer_Div_EL);
@@ -94,14 +94,14 @@ function makeMainCountriesContainer() {
 
   // Assign Id and Class to element's
   mainCountriesContainer_Div_EL.id = 'mainCountriesContainer_Div_JS';
-  mainCountriesContainer_Div_EL.classList = 'mainCountriesContainer_Div_CSS mainCountriesContainer_Div_darkMode_CSS';
+  mainCountriesContainer_Div_EL.classList = 'mainCountriesContainer_Div_CSS mainCountriesContainer_Div_lightMode_CSS';
   findCountriesTools_Div_EL.id = 'findCountriesTools_Div_JS';
   findCountriesTools_Div_EL.classList = 'findCountriesTools_Div_CSS';
   searchCountries_Input_EL.id = 'searchCountries_Input_JS';
-  searchCountries_Input_EL.classList = 'searchCountries_Input_CSS searchCountries_Input_darkMode_CSS';
+  searchCountries_Input_EL.classList = 'searchCountries_Input_CSS searchCountries_Input_lightMode_CSS';
   searchCountries_Input_EL.placeholder = 'Search for a country . . .';
   filterByRegoin_Select_EL.id = 'filterByRegoin_Select_JS';
-  filterByRegoin_Select_EL.classList = 'filterByRegoin_Select_CSS filterByRegoin_Select_darkMode_CSS';
+  filterByRegoin_Select_EL.classList = 'filterByRegoin_Select_CSS filterByRegoin_Select_lightMode_CSS';
   ListOfAllCountriesContainer_Div_EL.id = 'ListOfAllCountriesContainer_Div_JS';
   ListOfAllCountriesContainer_Div_EL.classList = 'ListOfAllCountriesContainer_Div_CSS';
 
@@ -190,7 +190,6 @@ function allEvents(){
       headerLabel_P_EL.classList.remove('headerLabel_P_darkMode_CSS');
       darkMode_P_EL.classList.remove('darkMode_P_darkMode_CSS');
       searchCountries_Input_EL.classList.remove('searchCountries_Input_darkMode_CSS');
-      mainCountriesContainer_Div_EL.classList.remove('mainCountriesContainer_Div_darkMode_CSS');
       filterByRegoin_Select_EL.classList.remove('filterByRegoin_Select_darkMode_CSS');
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
@@ -202,7 +201,6 @@ function allEvents(){
       headerLabel_P_EL.classList.add('headerLabel_P_lightMode_CSS');
       darkMode_P_EL.classList.add('darkMode_P_lightMode_CSS');    
       searchCountries_Input_EL.classList.add('searchCountries_Input_lightMode_CSS'); 
-      mainCountriesContainer_Div_EL.classList.add('mainCountriesContainer_Div_lightMode_CSS');
       filterByRegoin_Select_EL.classList.add('filterByRegoin_Select_lightMode_CSS'); 
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
@@ -216,7 +214,6 @@ function allEvents(){
       headerLabel_P_EL.classList.remove('headerLabel_P_lightMode_CSS');
       darkMode_P_EL.classList.remove('darkMode_P_lightMode_CSS');
       searchCountries_Input_EL.classList.remove('searchCountries_Input_lightMode_CSS');
-      mainCountriesContainer_Div_EL.classList.remove('mainCountriesContainer_Div_lightMode_CSS');
       filterByRegoin_Select_EL.classList.remove('filterByRegoin_Select_lightMode_CSS');
       countryContainerSmallView_Div_EL.classList.remove('countryContainerSmallView_Div_lightMode_CSS');
       currentCuntrytoShow.forEach(element=>{
@@ -229,7 +226,6 @@ function allEvents(){
       headerLabel_P_EL.classList.add('headerLabel_P_darkMode_CSS');
       darkMode_P_EL.classList.add('darkMode_P_darkMode_CSS');     
       searchCountries_Input_EL.classList.add('searchCountries_Input_darkMode_CSS'); 
-      mainCountriesContainer_Div_EL.classList.add('mainCountriesContainer_Div_darkMode_CSS');
       filterByRegoin_Select_EL.classList.add('filterByRegoin_Select_darkMode_CSS');
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
