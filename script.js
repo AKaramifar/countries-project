@@ -15,17 +15,44 @@ function elements() {
   mainCountriesContainer_Div_EL;
   findCountriesTools_Div_EL;
   searchCountries_Input_EL;
-  filterByRegoin_Select_EL;
-  countries_Option_EL;
+  countriesRegoin_Div_EL;
+  filterByRegoin_P_EL;  
+  countriesRegoin_P_EL;
   ListOfAllCountriesContainer_Div_EL;
 
-  // Each countries container
+  // Each countries container small view
   countryContainerSmallView_Div_EL;
   countryImageSmallView_Img_EL;
   countryNameSmallView_P_EL;
   countryPopulationSmallView_P_EL;
   countryRegionSmallView_P_EL;
   countryCapitaSmallView_P_EL;
+
+  // Each countries container full view
+  countryContainerFullView_Div_EL;
+    //---------------------------------------------
+    countryBackButtonContainerFullView_Div_EL;
+      countryBackButtonFullView_P_EL;
+    //---------------------------------------------
+    countryWholeDetailContainerFullView_Div_EL;
+      countryImageFullView_Img_EL;
+      countryDetailContainerFullView_Div_EL;
+        //---------------------------------------------
+        countryDetailContainerFirstChildFullView_Div_EL;
+          countryDetailContainerFirstChild_1_FullView_Div_EL;
+            countryNameFullView_P_EL;
+            countryNativeNameFullView_P_EL;
+            countryPopulationFullView_P_EL;
+            countryRegionFullView_P_EL;
+            countrySubRegionFullView_P_EL;
+            countryCapitaFullView_P_EL;
+          countryDetailContainerFirstChild_2_FullView_Div_EL;
+            countryTopLevelDomainFullView_P_EL;
+            countryCurrenciesFullView_P_EL;
+            countryLanguageFullView_P_EL;
+        //---------------------------------------------
+        countryDetailContainerSecondChildFullView_Div_EL;
+          countryBorderCountriesFullView_P_EL;          
 }
 
 // All  public variable's
@@ -33,8 +60,11 @@ function publicVariables() {
   allCounteries;    
 }
 let allRegoin = [];
+let allRegoinIndex = [];
+let currentRegoin = 'All Regoin'
 let themMode = 'Light Mode';
 let currentCuntrytoShow = [];
+let countriesBordersId = [];
 function makeHeaderContainer() {
   // Assign Id and Class to body
   body_EL = document.querySelector("body");
@@ -76,42 +106,61 @@ function makeHeaderContainer() {
       return res.json();
     })
     .then((data) => {
-      allCounteries = JSON.parse(JSON.stringify(data));
+      allCounteries = JSON.parse(JSON.stringify(data));      
+      mainCountriesContainer_Div_EL = document.createElement("div");
+      mainCountriesContainer_Div_EL.id = 'mainCountriesContainer_Div_JS';
+      mainCountriesContainer_Div_EL.classList = 'mainCountriesContainer_Div_CSS mainCountriesContainer_Div_lightMode_CSS';
+      container_Div_EL.appendChild(mainCountriesContainer_Div_EL);
       makeMainCountriesContainer();
     })
     .catch((err) => {
       console.log(err);
     });
+    allEvents();
 }
 
-function makeMainCountriesContainer() {
+function makeMainCountriesContainer() {  
   // assign element's to globall varaibles
-  mainCountriesContainer_Div_EL = document.createElement("div");
   findCountriesTools_Div_EL = document.createElement("div");
   searchCountries_Input_EL = document.createElement("input");
-  filterByRegoin_Select_EL = document.createElement("select");  
+  filterByRegoin_P_EL = document.createElement("p");  
+  countriesRegoin_Div_EL = document.createElement('div');  
   ListOfAllCountriesContainer_Div_EL = document.createElement("div");
 
   // Assign Id and Class to element's
-  mainCountriesContainer_Div_EL.id = 'mainCountriesContainer_Div_JS';
-  mainCountriesContainer_Div_EL.classList = 'mainCountriesContainer_Div_CSS mainCountriesContainer_Div_lightMode_CSS';
   findCountriesTools_Div_EL.id = 'findCountriesTools_Div_JS';
   findCountriesTools_Div_EL.classList = 'findCountriesTools_Div_CSS';
   searchCountries_Input_EL.id = 'searchCountries_Input_JS';
-  searchCountries_Input_EL.classList = 'searchCountries_Input_CSS searchCountries_Input_lightMode_CSS';
+  searchCountries_Input_EL.classList = `searchCountries_Input_CSS ${(themMode == 'Dark Mode') ? 'searchCountries_Input_darkMode_CSS' : 'searchCountries_Input_lightMode_CSS'}`;
   searchCountries_Input_EL.placeholder = 'Search for a country . . .';
-  filterByRegoin_Select_EL.id = 'filterByRegoin_Select_JS';
-  filterByRegoin_Select_EL.classList = 'filterByRegoin_Select_CSS filterByRegoin_Select_lightMode_CSS';
+  countriesRegoin_Div_EL.id = `countriesRegoin_Div_JS`;
+  countriesRegoin_Div_EL.classList = `countriesRegoin_Div_CSS ${(themMode == 'Dark Mode') ? 'countriesRegoin_Div_darkMode_CSS' : 'countriesRegoin_Div_lightMode_CSS'}`;
+  filterByRegoin_P_EL.id = 'filterByRegoin_P_JS';
+  filterByRegoin_P_EL.classList = `filterByRegoin_P_CSS`;
+  filterByRegoin_P_EL.innerHTML = `All Regoin &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`; 
   ListOfAllCountriesContainer_Div_EL.id = 'ListOfAllCountriesContainer_Div_JS';
   ListOfAllCountriesContainer_Div_EL.classList = 'ListOfAllCountriesContainer_Div_CSS';
 
   // Add header element's to main container
-  container_Div_EL.appendChild(mainCountriesContainer_Div_EL);
   mainCountriesContainer_Div_EL.appendChild(findCountriesTools_Div_EL);
   findCountriesTools_Div_EL.appendChild(searchCountries_Input_EL);
-  findCountriesTools_Div_EL.appendChild(filterByRegoin_Select_EL);
+  findCountriesTools_Div_EL.appendChild(countriesRegoin_Div_EL);
+  countriesRegoin_Div_EL.appendChild(filterByRegoin_P_EL);
   mainCountriesContainer_Div_EL.appendChild(ListOfAllCountriesContainer_Div_EL);
 
+  searchCountries_Input_EL.addEventListener('input',()=>{
+    if(searchCountries_Input_EL.value == ''){
+      ListOfAllCountriesContainer_Div_EL.innerHTML = '';
+      currentCuntrytoShow = [];
+      allCounteries.forEach((countries, index)=>{
+        showCountries(countries, index);  
+      })
+    }
+    else{
+      ListOfAllCountriesContainer_Div_EL.innerHTML = '';
+      searchCountries(searchCountries_Input_EL.value, currentRegoin);
+    }
+  })
   currentCuntrytoShow = [];
   allCounteries.forEach((countries, index)=>{
     allRegoin.push(countries.region);        
@@ -119,18 +168,87 @@ function makeMainCountriesContainer() {
   }) 
   allRegoin = allRegoin.filter((elem, index, self)=> {
       return index === self.indexOf(elem);
+  })  
+  countriesRegoin_P_EL = document.createElement('p');
+  countriesRegoin_P_EL.id = `countries_allRegoin_P_JS`;      
+  countriesRegoin_P_EL.classList = `countriesRegoin_P_CSS ${(themMode == 'Dark Mode') ? 'countriesRegoin_P_darkMode_CSS' : 'countriesRegoin_P_lightMode_CSS'}`;    
+  countriesRegoin_P_EL.textContent = `All Regoin`;  
+  countriesRegoin_Div_EL.appendChild(countriesRegoin_P_EL);
+  countriesRegoin_P_EL.addEventListener('click', ()=> {   
+    filterByRegoin_P_EL.innerHTML = `All Regoin &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`; 
+    currentRegoin = `All Regoin`;
+    document.getElementById(`countries_allRegoin_P_JS`).style.display = 'none';
+    allRegoinIndex.forEach(regoinIndex=>{
+      document.getElementById(`countries_${regoinIndex}_P_JS`).style.display = 'none';
+    })
+    ListOfAllCountriesContainer_Div_EL.innerHTML = '';
+    searchCountries_Input_EL.value = '';
+    currentCuntrytoShow = []
+    allCounteries.forEach((countries, i)=>{      
+        showCountries(countries, i);        
+    })
   })
   allRegoin.forEach((regoin, index)=>{
     if(regoin != ''){
-      countries_Option_EL = document.createElement('option');
-      countries_Option_EL.id = `countries_${index}_Option_JS`;
-      countries_Option_EL.value = regoin;
-      countries_Option_EL.classList = `countries_Option_CSS`;
-      countries_Option_EL.textContent = regoin;
-      filterByRegoin_Select_EL.appendChild(countries_Option_EL);
+      allRegoinIndex.push(index);
+      countriesRegoin_P_EL = document.createElement('p');
+      countriesRegoin_P_EL.id = `countries_${index}_P_JS`;      
+      countriesRegoin_P_EL.classList = `countriesRegoin_P_CSS ${(themMode == 'Dark Mode') ? 'countriesRegoin_P_darkMode_CSS' : 'countriesRegoin_P_lightMode_CSS'}`;
+      countriesRegoin_P_EL.value = regoin;
+      countriesRegoin_P_EL.textContent = regoin;
+      countriesRegoin_P_EL.addEventListener('click', ()=> {   
+        filterByRegoin_P_EL.innerHTML = `${regoin} &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`;
+        currentRegoin = regoin;
+        document.getElementById(`countries_allRegoin_P_JS`).style.display = 'none';
+        allRegoinIndex.forEach(regoinIndex=>{
+          document.getElementById(`countries_${regoinIndex}_P_JS`).style.display = 'none';
+        })
+        ListOfAllCountriesContainer_Div_EL.innerHTML = '';
+        searchCountries_Input_EL.value = '';
+        currentCuntrytoShow = []
+        allCounteries.forEach((countries, i)=>{
+          if(countries.region == regoin){
+            showCountries(countries, i);  
+          }
+        })
+      })
+      countriesRegoin_Div_EL.appendChild(countriesRegoin_P_EL);      
+    }
+  })          
+  
+  filterByRegoin_P_EL.addEventListener('click',()=>{
+    if( document.getElementById(`countries_allRegoin_P_JS`).style.display == 'none'){
+      document.getElementById(`countries_allRegoin_P_JS`).style.display = 'block';
+      allRegoinIndex.forEach(regoinIndex=>{
+        document.getElementById(`countries_${regoinIndex}_P_JS`).style.display = 'block';
+      })
+    }
+    else{
+      document.getElementById(`countries_allRegoin_P_JS`).style.display = 'none';
+      allRegoinIndex.forEach(regoinIndex=>{
+        document.getElementById(`countries_${regoinIndex}_P_JS`).style.display = 'none';
+      })
     }
   })
-  allEvents();
+
+  filterByRegoin_P_EL.addEventListener('change', ()=>{
+    ListOfAllCountriesContainer_Div_EL.innerHTML = '';
+    searchCountries_Input_EL.value = '';
+    if(filterByRegoin_Select_EL.value == `All Regoin`){
+      currentCuntrytoShow = []
+      allCounteries.forEach((countries, index)=>{        
+          showCountries(countries, index);          
+      })
+    }
+    else{
+      currentCuntrytoShow = []
+      allCounteries.forEach((countries, index)=>{
+        if(countries.region == filterByRegoin_Select_EL.value){
+          showCountries(countries, index);  
+        }
+      })
+    }
+  })
 }
 
 function showCountries(country, index){  
@@ -146,6 +264,127 @@ function showCountries(country, index){
   // Assign Id and Class to element's
   countryContainerSmallView_Div_EL.id = `countryContainerSmallView_${index}_Div_JS`;
   countryContainerSmallView_Div_EL.classList = `countryContainerSmallView_Div_CSS ${(themMode == 'Dark Mode') ? 'countryContainerSmallView_Div_darkMode_CSS' : 'countryContainerSmallView_Div_lightMode_CSS'}`;
+  countryContainerSmallView_Div_EL.addEventListener('click', ()=> {    
+    currentCuntrytoShow = [];    
+    countriesBordersId = [];   
+    allRegoinIndex = []; 
+    setTimeout(()=> {      
+      mainCountriesContainer_Div_EL.innerHTML = '';
+      countryContainerFullView_Div_EL = document.createElement('div');
+      //---------------------------------------------
+      countryBackButtonContainerFullView_Div_EL = document.createElement('div');
+      countryBackButtonFullView_P_EL = document.createElement('p');
+      //---------------------------------------------
+      countryWholeDetailContainerFullView_Div_EL = document.createElement('div');
+        countryImageFullView_Img_EL = document.createElement('img');
+        countryDetailContainerFullView_Div_EL = document.createElement('div');
+          //---------------------------------------------
+          countryDetailContainerFirstChildFullView_Div_EL = document.createElement('div');
+            countryDetailContainerFirstChild_1_FullView_Div_EL = document.createElement('div');
+              countryNameFullView_P_EL = document.createElement('p');
+              countryNativeNameFullView_P_EL = document.createElement('p');
+              countryPopulationFullView_P_EL = document.createElement('p');
+              countryRegionFullView_P_EL = document.createElement('p');
+              countrySubRegionFullView_P_EL = document.createElement('p');
+              countryCapitaFullView_P_EL = document.createElement('p');
+            countryDetailContainerFirstChild_2_FullView_Div_EL = document.createElement('div');
+              countryTopLevelDomainFullView_P_EL = document.createElement('p');
+              countryCurrenciesFullView_P_EL = document.createElement('p');
+              countryLanguageFullView_P_EL = document.createElement('p');
+          //---------------------------------------------
+          countryDetailContainerSecondChildFullView_Div_EL = document.createElement('div');
+            countryBorderCountriesFullView_P_EL = document.createElement('p');
+      // ----------------------------------------------------------------------------------  
+      countryContainerFullView_Div_EL.id = `countryContainerFullView_${index}_Div_JS`;
+      countryContainerFullView_Div_EL.classList = `countryContainerFullView_Div_CSS ${(themMode == 'Dark Mode') ? 'countryContainerFullView_Div_darkMode_CSS' : 'countryContainerFullView_Div_lightMode_CSS'}`;
+      // ----------------------------------------------------------------------------------
+      countryBackButtonContainerFullView_Div_EL.id = `countryBackButtonContainerFullView_${index}_Div_JS`;
+      countryBackButtonContainerFullView_Div_EL.classList = `countryBackButtonContainerFullView_Div_CSS ${(themMode == 'Dark Mode') ? 'countryBackButtonContainerFullView_Div_darkMode_CSS' : 'countryBackButtonContainerFullView_Div_lightMode_CSS'}`;
+      countryBackButtonFullView_P_EL.id = `countryBackButtonFullView_${index}_P_JS`;
+      countryBackButtonFullView_P_EL.classList = `countryBackButtonFullView_P_CSS ${(themMode == 'Dark Mode') ? 'countryBackButtonFullView_P_darkMode_CSS' : 'countryBackButtonFullView_P_lightMode_CSS'}`;      
+      countryBackButtonFullView_P_EL.innerHTML = `<i class="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;Back`;
+      countryBackButtonFullView_P_EL.addEventListener('click', ()=>{  
+        setTimeout(()=> {          
+          countryContainerFullView_Div_EL.parentNode.removeChild(countryContainerFullView_Div_EL);
+          currentCuntrytoShow = [];
+          makeMainCountriesContainer();
+        },200);
+      })
+      // ----------------------------------------------------------------------------------
+      countryWholeDetailContainerFullView_Div_EL.id = `countryWholeDetailContainerFullView_${index}_Div_JS`;
+      countryWholeDetailContainerFullView_Div_EL.classList = `countryWholeDetailContainerFullView_Div_CSS`;
+      countryImageFullView_Img_EL.id = `countryImageFullView_${index}_Img_JS`;
+      countryImageFullView_Img_EL.classList = `countryImageFullView_Img_CSS`;
+      countryImageFullView_Img_EL.src = allCounteries[index].flag;
+      countryDetailContainerFullView_Div_EL.id = `countryDetailContainerFullView_${index}_Div_JS`;
+      countryDetailContainerFullView_Div_EL.classList = `countryDetailContainerFullView_Div_CSS`;
+      // ----------------------------------------------------------------------------------
+      countryDetailContainerFirstChildFullView_Div_EL.id = `countryDetailContainerFirstChildFullView_${index}_Div_JS`;
+      countryDetailContainerFirstChildFullView_Div_EL.classList = `countryDetailContainerFirstChildFullView_Div_CSS`;
+      countryDetailContainerFirstChild_1_FullView_Div_EL.id = `countryDetailContainerFirstChild_1_FullView_${index}_Div_JS`;
+      countryDetailContainerFirstChild_1_FullView_Div_EL.classList = `countryDetailContainerFirstChild_1_FullView_Div_CSS`;
+      countryNameFullView_P_EL.id = `countryNameFullView_${index}_P_JS`;
+      countryNameFullView_P_EL.classList = `countryNameFullView_P_CSS`;
+      countryNameFullView_P_EL.textContent = allCounteries[index].name;
+      countryNativeNameFullView_P_EL.id = `countryNativeNameFullView_${index}_P_JS`;
+      countryNativeNameFullView_P_EL.classList = `countryNativeNameFullView_P_CSS`;
+      countryNativeNameFullView_P_EL.innerHTML = `<strong>Native Name:</strong> ${allCounteries[index].nativeName}`;
+      countryPopulationFullView_P_EL.id = `countryPopulationFullView_${index}_P_JS`;
+      countryPopulationFullView_P_EL.classList = `countryPopulationFullView_P_CSS`;
+      countryPopulationFullView_P_EL.innerHTML = `<strong>Population:</strong> ${allCounteries[index].population}`;
+      countryRegionFullView_P_EL.id = `countryRegionFullView_${index}_P_JS`;
+      countryRegionFullView_P_EL.classList = `countryRegionFullView_P_CSS`;
+      countryRegionFullView_P_EL.innerHTML = `<strong>Regoin:</strong> ${allCounteries[index].region}`;
+      countryCapitaFullView_P_EL.id = `countryCapitaFullView_${index}_P_JS`;
+      countryCapitaFullView_P_EL.classList = `countryCapitaFullView_P_CSS`;
+      countryCapitaFullView_P_EL.innerHTML = `<strong>Capital:</strong> ${allCounteries[index].capital}`;
+      countryDetailContainerFirstChild_2_FullView_Div_EL.id = `countryDetailContainerFirstChild_2_FullView_${index}_Div_JS`;
+      countryDetailContainerFirstChild_2_FullView_Div_EL.classList = `countryDetailContainerFirstChild_2_FullView_Div_CSS`;
+      countryTopLevelDomainFullView_P_EL.id = `countryTopLevelDomainFullView_${index}_P_JS`;
+      countryTopLevelDomainFullView_P_EL.classList = `countryTopLevelDomainFullView_P_CSS`;
+      countryTopLevelDomainFullView_P_EL.innerHTML = `<strong>Top Level Domain:</strong> ${allCounteries[index].topLevelDomain.join()}`;
+      countryCurrenciesFullView_P_EL.id = `countryCurrenciesFullView_${index}_P_JS`;
+      countryCurrenciesFullView_P_EL.classList = `countryCurrenciesFullView_P_CSS`;
+      countryCurrenciesFullView_P_EL.innerHTML = `<strong>Currencies:</strong> ${allCounteries[index].currencies[0].name}`;
+      countryLanguageFullView_P_EL.id = `countryLanguageFullView_${index}_P_JS`;
+      countryLanguageFullView_P_EL.classList = `countryLanguageFullView_P_CSS`;            
+      countryLanguageFullView_P_EL.innerHTML = `<strong>Languages:</strong> ${allCounteries.map(el=> el.languages)[index].map(el=> el.name).join()}`;
+      countryDetailContainerSecondChildFullView_Div_EL.id = `countryDetailContainerSecondChildFullView_${index}_Div_JS`;
+      countryDetailContainerSecondChildFullView_Div_EL.classList = `countryDetailContainerSecondChildFullView_Div_CSS`;
+      countryBorderCountriesFullView_P_EL.id = `countryBorderCountriesFullView_${index}_P_JS`;
+      countryBorderCountriesFullView_P_EL.classList = `countryBorderCountriesFullView_P_CSS`;
+      countryBorderCountriesFullView_P_EL.innerHTML = `<strong>Border Countries:</strong> `;
+      allCounteries.map(country=> country.borders)[index].forEach((borders, i)=>{        
+        countriesBordersId.push(`contry_${index}_border_${i}`)
+        countryBorderCountriesFullView_P_EL.innerHTML += `<p id = "contry_${index}_border_${i}" class = "titlesBold_CSS">${allCounteries.filter(country=> country.alpha3Code == borders).map(country=> country.name)}</p>`;        
+      });
+      if(countriesBordersId.length == 0){
+        countryBorderCountriesFullView_P_EL.innerHTML = `<strong>Border Countries:</strong>&nbsp; No Border`;
+      }      
+      //----------------------------------------------------------------------------------------------
+      mainCountriesContainer_Div_EL.appendChild(countryContainerFullView_Div_EL);
+      countryContainerFullView_Div_EL.appendChild(countryBackButtonContainerFullView_Div_EL);
+      countryBackButtonContainerFullView_Div_EL.appendChild(countryBackButtonFullView_P_EL);
+      countryContainerFullView_Div_EL.appendChild(countryWholeDetailContainerFullView_Div_EL);
+      countryWholeDetailContainerFullView_Div_EL.appendChild(countryImageFullView_Img_EL);
+      countryWholeDetailContainerFullView_Div_EL.appendChild(countryDetailContainerFullView_Div_EL);;
+      countryDetailContainerFullView_Div_EL.appendChild(countryDetailContainerFirstChildFullView_Div_EL);
+      countryDetailContainerFirstChildFullView_Div_EL.appendChild(countryDetailContainerFirstChild_1_FullView_Div_EL);
+      countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryNameFullView_P_EL);
+      countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryNativeNameFullView_P_EL);
+      countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryPopulationFullView_P_EL);
+      countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryRegionFullView_P_EL);
+      countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countrySubRegionFullView_P_EL);
+      countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryCapitaFullView_P_EL);
+      countryDetailContainerFirstChildFullView_Div_EL.appendChild(countryDetailContainerFirstChild_2_FullView_Div_EL);
+      countryDetailContainerFirstChild_2_FullView_Div_EL.appendChild(countryTopLevelDomainFullView_P_EL);
+      countryDetailContainerFirstChild_2_FullView_Div_EL.appendChild(countryCurrenciesFullView_P_EL);
+      countryDetailContainerFirstChild_2_FullView_Div_EL.appendChild(countryLanguageFullView_P_EL);      
+      countryDetailContainerFullView_Div_EL.appendChild(countryDetailContainerSecondChildFullView_Div_EL);
+      countryDetailContainerSecondChildFullView_Div_EL.appendChild(countryBorderCountriesFullView_P_EL);
+    }, 200);  
+    
+  })
   countryImageSmallView_Img_EL.id = `countryImageSmallView_${index}_Img_JS`;
   countryImageSmallView_Img_EL.classList = `countryImageSmallView_Img_CSS`;
   countryNameSmallView_P_EL.id = `countryNameSmallView_${index}_P_JS`;
@@ -159,10 +398,10 @@ function showCountries(country, index){
 
   // Fill out elements with data
   countryImageSmallView_Img_EL.src = `${country.flag}`;
-  countryNameSmallView_P_EL.innerHTML = `<strong>${country.name}</strong>`;
-  countryPopulationSmallView_P_EL.innerHTML = `<strong>Population: </strong>${country.population}`;
-  countryRegionSmallView_P_EL.innerHTML = `<strong>Region: </strong>${country.region}`;
-  countryCapitaSmallView_P_EL.innerHTML = `<strong>Capital: </strong>${country.capital}`;
+  countryNameSmallView_P_EL.innerHTML = `<strong class='textSmallView_CSS'>${country.name}</strong>`;
+  countryPopulationSmallView_P_EL.innerHTML = `<strong class='textSmallView_CSS'>Population:  &nbsp;</strong>${country.population}`;
+  countryRegionSmallView_P_EL.innerHTML = `<strong class='textSmallView_CSS'>Region:  &nbsp;</strong>${country.region}`;
+  countryCapitaSmallView_P_EL.innerHTML = `<strong class='textSmallView_CSS'>Capital:  &nbsp;</strong>${country.capital}`;
 
   // Show all countries on page
   ListOfAllCountriesContainer_Div_EL.appendChild(countryContainerSmallView_Div_EL);
@@ -170,19 +409,27 @@ function showCountries(country, index){
   countryContainerSmallView_Div_EL.appendChild(countryNameSmallView_P_EL);
   countryContainerSmallView_Div_EL.appendChild(countryPopulationSmallView_P_EL);
   countryContainerSmallView_Div_EL.appendChild(countryRegionSmallView_P_EL);
-  countryContainerSmallView_Div_EL.appendChild(countryCapitaSmallView_P_EL);      
+  countryContainerSmallView_Div_EL.appendChild(countryCapitaSmallView_P_EL);       
 }
 
-function searchCountries(country){
+function searchCountries(country, regoin){
   currentCuntrytoShow = [];
-  allCounteries.forEach((countries, index)=>{
-    if(countries.name.toLowerCase().indexOf(country.toLowerCase()) > -1)
-    showCountries(countries, index); 
-  })   
+  if(regoin == 'All Regoin'){
+    allCounteries.forEach((countries, index)=>{
+      if(countries.name.toLowerCase().indexOf(country.toLowerCase()) > -1)
+      showCountries(countries, index); 
+    })   
+  }
+  else{
+    allCounteries.forEach((countries, index)=>{
+      if(countries.name.toLowerCase().indexOf(country.toLowerCase()) > -1 && countries.region == regoin)
+      showCountries(countries, index); 
+    }) 
+  }
 }
 
 function allEvents(){  
-  darkMode_P_EL.addEventListener('click', ()=>{
+  darkMode_P_EL.onclick = ()=>{
     if (themMode == 'Dark Mode'){
       themMode = 'Light Mode';
       body_EL.classList.remove('body_darkMode_CSS');
@@ -190,10 +437,18 @@ function allEvents(){
       headerLabel_P_EL.classList.remove('headerLabel_P_darkMode_CSS');
       darkMode_P_EL.classList.remove('darkMode_P_darkMode_CSS');
       searchCountries_Input_EL.classList.remove('searchCountries_Input_darkMode_CSS');
-      filterByRegoin_Select_EL.classList.remove('filterByRegoin_Select_darkMode_CSS');
+      countriesRegoin_Div_EL.classList.remove('countriesRegoin_Div_darkMode_CSS');
+      typeof countryBackButtonFullView_P_EL != 'undefined' ? countryBackButtonFullView_P_EL.classList.remove('countryBackButtonFullView_P_darkMode_CSS') : {};
+      typeof countryContainerFullView_Div_EL != 'undefined' ? countryContainerFullView_Div_EL.classList.remove('countryContainerFullView_Div_darkMode_CSS') : {};
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
         elementContainer.classList.remove('countryContainerSmallView_Div_darkMode_CSS');
+      });      
+      let countriesRegoin = document.getElementById(`countries_allRegoin_P_JS`);
+      countriesRegoin ? countriesRegoin.classList.remove('countriesRegoin_P_darkMode_CSS') : {};
+      allRegoinIndex.forEach(element=>{
+        countriesRegoin = document.getElementById(`countries_${element}_P_JS`);
+        countriesRegoin.classList.remove('countriesRegoin_P_darkMode_CSS');
       });
       darkMode_P_EL.innerHTML = '<i class="far fa-moon"></i> Dark Mode';
       body_EL.classList.add('body_lightMode_CSS');
@@ -201,24 +456,41 @@ function allEvents(){
       headerLabel_P_EL.classList.add('headerLabel_P_lightMode_CSS');
       darkMode_P_EL.classList.add('darkMode_P_lightMode_CSS');    
       searchCountries_Input_EL.classList.add('searchCountries_Input_lightMode_CSS'); 
-      filterByRegoin_Select_EL.classList.add('filterByRegoin_Select_lightMode_CSS'); 
+      countriesRegoin_Div_EL.classList.add('countriesRegoin_Div_lightMode_CSS');
+      typeof countryBackButtonFullView_P_EL != 'undefined' ? countryBackButtonFullView_P_EL.classList.add('countryBackButtonFullView_P_lightMode_CSS') : {};
+      typeof countryContainerFullView_Div_EL != 'undefined' ? countryContainerFullView_Div_EL.classList.add('countryContainerFullView_Div_lightMode_CSS') : {};
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
         elementContainer.classList.add('countryContainerSmallView_Div_lightMode_CSS');
       });
+      countriesRegoin = document.getElementById(`countries_allRegoin_P_JS`);
+      countriesRegoin ? countriesRegoin.classList.add('countriesRegoin_P_lightMode_CSS') : {};
+      allRegoinIndex.forEach(element=>{
+        countriesRegoin = document.getElementById(`countries_${element}_P_JS`);
+        countriesRegoin.classList.add('countriesRegoin_P_lightMode_CSS');
+      });
+      
     }    
-    else{
+    else {      
       themMode = 'Dark Mode';
       body_EL.classList.remove('body_lightMode_CSS');
       headerContainer_Div_EL.classList.remove('headerContainer_Div_lightMode_CSS');
       headerLabel_P_EL.classList.remove('headerLabel_P_lightMode_CSS');
       darkMode_P_EL.classList.remove('darkMode_P_lightMode_CSS');
       searchCountries_Input_EL.classList.remove('searchCountries_Input_lightMode_CSS');
-      filterByRegoin_Select_EL.classList.remove('filterByRegoin_Select_lightMode_CSS');
+      countriesRegoin_Div_EL.classList.remove('countriesRegoin_Div_ligtMode_CSS');
       countryContainerSmallView_Div_EL.classList.remove('countryContainerSmallView_Div_lightMode_CSS');
+      typeof countryBackButtonFullView_P_EL != 'undefined' ? countryBackButtonFullView_P_EL.classList.remove('countryBackButtonFullView_P_lightMode_CSS') : {};
+      typeof countryContainerFullView_Div_EL != 'undefined' ? countryContainerFullView_Div_EL.classList.remove('countryContainerFullView_Div_lightMode_CSS') : {};
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
         elementContainer.classList.remove('countryContainerSmallView_Div_lightMode_CSS');
+      });
+      let countriesRegoin = document.getElementById(`countries_allRegoin_P_JS`);
+      countriesRegoin ? countriesRegoin.classList.remove('countriesRegoin_P_lightMode_CSS') : {};
+      allRegoinIndex.forEach(element=>{
+        countriesRegoin = document.getElementById(`countries_${element}_P_JS`);
+        countriesRegoin.classList.remove('countriesRegoin_P_lightMode_CSS');
       });
       darkMode_P_EL.innerHTML = '<i class="far fa-sun"></i> Light Mode';
       body_EL.classList.add('body_darkMode_CSS');
@@ -226,77 +498,23 @@ function allEvents(){
       headerLabel_P_EL.classList.add('headerLabel_P_darkMode_CSS');
       darkMode_P_EL.classList.add('darkMode_P_darkMode_CSS');     
       searchCountries_Input_EL.classList.add('searchCountries_Input_darkMode_CSS'); 
-      filterByRegoin_Select_EL.classList.add('filterByRegoin_Select_darkMode_CSS');
+      typeof countryBackButtonFullView_P_EL != 'undefined' ? countryBackButtonFullView_P_EL.classList.add('countryBackButtonFullView_P_darkMode_CSS') : {};
+      typeof countryContainerFullView_Div_EL != 'undefined' ? countryContainerFullView_Div_EL.classList.add('countryContainerFullView_Div_darkMode_CSS') : {};
+      countriesRegoin ? countriesRegoin_Div_EL.classList.add('countriesRegoin_Div_darkMode_CSS') : {};
       currentCuntrytoShow.forEach(element=>{
         let elementContainer = document.getElementById(`countryContainerSmallView_${element}_Div_JS`);
         elementContainer.classList.add('countryContainerSmallView_Div_darkMode_CSS');
       });
+      countriesRegoin = document.getElementById(`countries_allRegoin_P_JS`);
+      countriesRegoin ? countriesRegoin.classList.add('countriesRegoin_P_darkMode_CSS') : {};
+      allRegoinIndex.forEach(element=>{
+        countriesRegoin = document.getElementById(`countries_${element}_P_JS`);
+        countriesRegoin.classList.add('countriesRegoin_P_darkMode_CSS');
+      });
     }
 
-  })
-  searchCountries_Input_EL.addEventListener('input',()=>{
-    if(searchCountries_Input_EL.value == ''){
-      ListOfAllCountriesContainer_Div_EL.innerHTML = '';
-      currentCuntrytoShow = [];
-      allCounteries.forEach((countries, index)=>{
-        showCountries(countries, index);  
-      })
-    }
-    else{
-      ListOfAllCountriesContainer_Div_EL.innerHTML = '';
-      searchCountries(searchCountries_Input_EL.value);
-    }
-  })
-
-  filterByRegoin_Select_EL.addEventListener('change', ()=>{
-    ListOfAllCountriesContainer_Div_EL.innerHTML = '';
-    searchCountries_Input_EL.value = '';
-    currentCuntrytoShow = []
-    allCounteries.forEach((countries, index)=>{
-      if(countries.region == filterByRegoin_Select_EL.value){
-        showCountries(countries, index);  
-      }
-    })
-  })
+  }  
 
 }
 
 window.onload = makeHeaderContainer;
-
-
-// function episodeSearch(allEpisodes, elementParameterToSearch){  
-//   mainDiv_El.innerHTML = ''; 
-//   let searchResualt = 0;
-//   allEpisodes.forEach((episode, index)=> {  
-//     let episodeResualt = 0;
-//     let episodeContainer = JSON.parse(JSON.stringify(episode))      
-//     episodeContainer.name = `${episode.name} - ${titleCodeGenerator(episode)}`;    
-  
-//     if (episodeContainer.name.toLowerCase().indexOf(elementParameterToSearch.value) > -1){
-//       episodeContainer.name = episodeContainer.name.replace(new RegExp(elementParameterToSearch.value, "gi"), (match) => `<strong class="highlight_CSS">${match}</strong>`);
-//       episodeResualt++;
-//     }
-//     if(episode.summary != null){
-//       if (episode.summary != ''){
-//         episodeContainer.summary = `${pureSummary(episode)}`;
-//         if (episodeContainer.summary.toLowerCase().indexOf(elementParameterToSearch.value) > -1){
-//           episodeContainer.summary = episodeContainer.summary.replace(new RegExp(elementParameterToSearch.value, "gi"), (match) => `<strong class="highlight_CSS">${match}</strong>`);      
-//           episodeResualt++;
-//         }    
-//       }       
-//     }        
-//     if(episodeResualt > 0) {
-//       searchResualt++;
-//       makePageForEpisodes(episodeContainer, index, 'search');
-//     }
-//   })
-//   if (searchResualt == 0) {    
-//     nothingToShow_El.id = 'nothingToShow_JS';
-//     nothingToShow_El.textContent = 'Sorry Nothing to show ! ! !';
-//     mainDiv_El.appendChild(nothingToShow_El);     
-//     searchResualt_El.textContent = `0 | ${allEpisodes.length}`;
-//   }
-//   else{
-//     searchResualt_El.textContent = `${searchResualt} | ${allEpisodes.length}`;
-//   }
-// }
