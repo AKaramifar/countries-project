@@ -299,7 +299,7 @@ function showCountries(country, index){
       countryContainerFullView_Div_EL.classList = `countryContainerFullView_Div_CSS ${(themMode == 'Dark Mode') ? 'countryContainerFullView_Div_darkMode_CSS' : 'countryContainerFullView_Div_lightMode_CSS'}`;
       // ----------------------------------------------------------------------------------
       countryBackButtonContainerFullView_Div_EL.id = `countryBackButtonContainerFullView_${index}_Div_JS`;
-      countryBackButtonContainerFullView_Div_EL.classList = `countryBackButtonContainerFullView_Div_CSS ${(themMode == 'Dark Mode') ? 'countryBackButtonContainerFullView_Div_darkMode_CSS' : 'countryBackButtonContainerFullView_Div_lightMode_CSS'}`;
+      countryBackButtonContainerFullView_Div_EL.classList = `countryBackButtonContainerFullView_Div_CSS`;
       countryBackButtonFullView_P_EL.id = `countryBackButtonFullView_${index}_P_JS`;
       countryBackButtonFullView_P_EL.classList = `countryBackButtonFullView_P_CSS ${(themMode == 'Dark Mode') ? 'countryBackButtonFullView_P_darkMode_CSS' : 'countryBackButtonFullView_P_lightMode_CSS'}`;      
       countryBackButtonFullView_P_EL.innerHTML = `<i class="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;Back`;
