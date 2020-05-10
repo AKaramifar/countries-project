@@ -137,7 +137,7 @@ function makeMainCountriesContainer() {
   countriesRegoin_Div_EL.classList = `countriesRegoin_Div_CSS ${(themMode == 'Dark Mode') ? 'countriesRegoin_Div_darkMode_CSS' : 'countriesRegoin_Div_lightMode_CSS'}`;
   filterByRegoin_P_EL.id = 'filterByRegoin_P_JS';
   filterByRegoin_P_EL.classList = `filterByRegoin_P_CSS`;
-  filterByRegoin_P_EL.innerHTML = `All Regoin &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`; 
+  filterByRegoin_P_EL.innerHTML = `All Region &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`; 
   ListOfAllCountriesContainer_Div_EL.id = 'ListOfAllCountriesContainer_Div_JS';
   ListOfAllCountriesContainer_Div_EL.classList = 'ListOfAllCountriesContainer_Div_CSS';
 
@@ -172,10 +172,10 @@ function makeMainCountriesContainer() {
   countriesRegoin_P_EL = document.createElement('p');
   countriesRegoin_P_EL.id = `countries_allRegoin_P_JS`;      
   countriesRegoin_P_EL.classList = `countriesRegoin_P_CSS ${(themMode == 'Dark Mode') ? 'countriesRegoin_P_darkMode_CSS' : 'countriesRegoin_P_lightMode_CSS'}`;    
-  countriesRegoin_P_EL.textContent = `All Regoin`;  
+  countriesRegoin_P_EL.textContent = `All Region`;  
   countriesRegoin_Div_EL.appendChild(countriesRegoin_P_EL);
   countriesRegoin_P_EL.addEventListener('click', ()=> {   
-    filterByRegoin_P_EL.innerHTML = `All Regoin &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`; 
+    filterByRegoin_P_EL.innerHTML = `All Region &nbsp;&nbsp;<i class="allRegoinSymbol_CSS fas fa-sort-down"></i>`; 
     currentRegoin = `All Regoin`;
     document.getElementById(`countries_allRegoin_P_JS`).style.display = 'none';
     allRegoinIndex.forEach(regoinIndex=>{
