@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Nunito+Sans:300,600,800|Concert+One&display=swap");
 @keyframes FadeIn {
   from {
     opacity: 0;
@@ -37,6 +37,39 @@
 }
 .body_darkMode_CSS {
   background-color: hsl(207, 26%, 17%);
+}
+/* Top button style */
+.topButton_P_CSS{
+  left: 94%;
+  font-family: 'Concert One', cursive;  
+  padding: 11px 10px 14px 10px;
+  background-color: #1f2227;
+  border-radius: 50%;
+  position: fixed;
+  animation: FadeIn 1s;
+  transition: 100ms;
+  display: none;
+  z-index: 1000;
+}
+.topButton_P_lightMode_CSS{
+  color: hsl(200, 15%, 8%);
+  background-color: hsl(0, 0%, 98%);
+  box-shadow: 0px 0px 2px 0px rgba(153, 153, 153, 0.7);
+}
+.topButton_P_lightMode_CSS:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: hsl(0, 0%, 100%);
+}
+.topButton_P_darkMode_CSS{
+  color: hsl(0, 0%, 100%);
+  background-color: hsl(207, 26%, 17%);  
+  box-shadow: 0px 0px 2px 0px rgba(153, 153, 153, 0.7);
+}
+.topButton_P_darkMode_CSS:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+  background-color: hsl(209, 23%, 22%);
 }
 
 .container_CSS {

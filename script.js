@@ -2,15 +2,13 @@
 function elements() {
   // Body
   body_EL;
-
+  topButton_P_EL;
   // Main Container
   container_Div_EL;
-
   // Header
   headerContainer_Div_EL;
   headerLabel_P_EL;
   darkMode_P_EL;
-
   // First view is a list of all countries with search box and filter box
   mainCountriesContainer_Div_EL;
   findCountriesTools_Div_EL;
@@ -20,7 +18,6 @@ function elements() {
   filterByRegoin_P_EL;  
   countriesRegoin_P_EL;
   ListOfAllCountriesContainer_Div_EL;
-
   // Each countries container small view
   countryContainerSmallView_Div_EL;
   countryImageSmallView_Img_EL;
@@ -28,7 +25,6 @@ function elements() {
   countryPopulationSmallView_P_EL;
   countryRegionSmallView_P_EL;
   countryCapitaSmallView_P_EL;
-
   // Each countries container full view
   countryContainerFullView_Div_EL;
   //---------------------------------------------
@@ -57,7 +53,6 @@ function elements() {
   countryBorderCountriesFullView_P_EL;    
   countryBorder_P_EL;    
 }
-
 // All  public variable's
 function publicVariables() {
   allCounteries;  
@@ -69,7 +64,7 @@ function publicVariables() {
   currentCountryFullView;
   countriesBordersId;
 }
-
+// Asign defualt value to public variables
 allRegoin = [];
 allRegoinIndex = [];
 currentRegoin = 'All Regoin';
@@ -79,10 +74,31 @@ currentCountryFullView = '';
 countriesBordersId = [];
 
 function makeHeaderContainer() {
-  // Assign Id and Class to body
+  // Assign Id and Class to body and top button
   body_EL = document.querySelector("body");
   body_EL.id = "body_JS";
   body_EL.classList = "body_CSS body_lightMode_CSS";
+  topButton_P_EL = document.createElement('p');
+  topButton_P_EL.id = 'topButton_P_JS';
+  topButton_P_EL.classList = `topButton_P_CSS ${(themMode == 'Dark Mode') ? 'topButton_P_darkMode_CSS' : 'topButton_P_lightMode_CSS'}`;
+  topButton_P_EL.innerHTML = `Top`;
+  body_EL.appendChild(topButton_P_EL);
+  window.onscroll = ()=>{
+    if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+      topButton_P_EL.style.display = "block";
+    } else {
+      topButton_P_EL.style.display = "none";
+    }
+  }
+  topButton_P_EL.addEventListener('click',()=>{
+    var scrollStep = -window.scrollY / (1000 / 15),
+        scrollInterval = setInterval(function(){
+        if ( window.scrollY != 0 ) {
+            window.scrollBy( 0, scrollStep );
+        }
+        else clearInterval(scrollInterval); 
+    },15);
+  })
 
   // Main container for whole page
   container_Div_EL = document.createElement("div");
@@ -129,7 +145,7 @@ function makeHeaderContainer() {
     .catch((err) => {
       console.log(err);
     });
-    allEvents();
+    darkMode();
 }
 
 function makeMainCountriesContainer() {  
@@ -160,7 +176,7 @@ function makeMainCountriesContainer() {
   // Add header element's to main container
   mainCountriesContainer_Div_EL.appendChild(findCountriesTools_Div_EL);
   findCountriesTools_Div_EL.appendChild(searchCountriesInput_Div_EL);
-  searchCountriesInput_Div_EL.innerHTML = `<i id='searchIcon_JS' class="searchIcon_CSS fas fa-search"></i>` //${(themMode == 'Dark Mode') ? 'searchIcon_darkMode_CSS' : 'searchIcon_lightMode_CSS'}
+  searchCountriesInput_Div_EL.innerHTML = `<i id='searchIcon_JS' class="searchIcon_CSS fas fa-search"></i>`;
   searchCountriesInput_Div_EL.appendChild(searchCountries_Input_EL);  
   findCountriesTools_Div_EL.appendChild(countriesRegoin_Div_EL);
   countriesRegoin_Div_EL.appendChild(filterByRegoin_P_EL);
@@ -465,11 +481,12 @@ function searchCountries(country, regoin){
   }
 }
 
-function allEvents(){  
+function darkMode(){  
   darkMode_P_EL.onclick = ()=>{    
     if (themMode == 'Dark Mode'){
       themMode = 'Light Mode';
       body_EL.classList.remove('body_darkMode_CSS');
+      topButton_P_EL.classList.remove('topButton_P_darkMode_CSS');
       headerContainer_Div_EL.classList.remove('headerContainer_Div_darkMode_CSS');
       headerLabel_P_EL.classList.remove('headerLabel_P_darkMode_CSS');
       darkMode_P_EL.classList.remove('darkMode_P_darkMode_CSS');
@@ -494,6 +511,7 @@ function allEvents(){
       });
       darkMode_P_EL.innerHTML = '<i class="far fa-moon"></i> Dark Mode';
       body_EL.classList.add('body_lightMode_CSS');
+      topButton_P_EL.classList.add('topButton_P_lightMode_CSS');
       headerContainer_Div_EL.classList.add('headerContainer_Div_lightMode_CSS');
       headerLabel_P_EL.classList.add('headerLabel_P_lightMode_CSS');
       darkMode_P_EL.classList.add('darkMode_P_lightMode_CSS');    
@@ -520,6 +538,7 @@ function allEvents(){
     else {      
       themMode = 'Dark Mode';
       body_EL.classList.remove('body_lightMode_CSS');
+      topButton_P_EL.classList.remove('topButton_P_lightMode_CSS');
       headerContainer_Div_EL.classList.remove('headerContainer_Div_lightMode_CSS');
       headerLabel_P_EL.classList.remove('headerLabel_P_lightMode_CSS');
       darkMode_P_EL.classList.remove('darkMode_P_lightMode_CSS');
@@ -545,6 +564,7 @@ function allEvents(){
       });
       darkMode_P_EL.innerHTML = '<i class="far fa-sun"></i> Light Mode';
       body_EL.classList.add('body_darkMode_CSS');
+      topButton_P_EL.classList.add('topButton_P_darkMode_CSS');
       headerContainer_Div_EL.classList.add('headerContainer_Div_darkMode_CSS');
       headerLabel_P_EL.classList.add('headerLabel_P_darkMode_CSS');
       darkMode_P_EL.classList.add('darkMode_P_darkMode_CSS');     
