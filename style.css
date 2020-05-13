@@ -309,7 +309,7 @@
   align-items: flex-end;  
 }
 .countryDetailContainerFirstChild_1_FullView_Div_CSS {
-  margin-left: 80px;
+  margin-left: 60px;
   height: fit-content
 }
 .countryDetailContainerFirstChild_2_FullView_Div_CSS {
@@ -317,7 +317,7 @@
   height: 129px;
 }
 .countryDetailContainerSecondChildFullView_Div_CSS {
-  margin-left: 80px;
+  margin-left: 60px;
 }
 .countryBackButtonFullView_P_CSS {
   display: flex;
@@ -354,7 +354,7 @@
 }
 .countryNameFullView_Div_CSS{
   margin-top: 30px;
-  margin-left: 80px;
+  margin-left: 60px;
 }
 .countryNameFullView_P_CSS {
   font-size: 20px;
@@ -415,4 +415,43 @@
 }
 .searchIcon_darkMode_CSS {
   color: hsl(0, 0%, 98%);
+}
+
+@media (min-width: 0px) and (max-width: 400px){
+  .headerLabel_P_CSS {
+    font-size: 15px;
+    margin-left: 20px;
+  }
+  .darkMode_P_CSS {
+    font-size: 13px;    
+    margin-right: 20px;
+    transition: 200ms;
+  }
+  .findCountriesTools_Div_CSS {
+    width: 100%;
+    height: 100px;
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .searchCountriesInput_Div_CSS {
+    margin-top: 25px;
+    margin-left: 10%;
+    width: 80%;    
+  }  
+  .searchCountries_Input_CSS {
+    width: 100%;
+    margin-left: 0px;
+    height: 40px;
+    border-radius: 3px;
+    border: none;
+    text-indent: 40px;
+    transition: 200ms;
+  }
+  .countriesRegoin_Div_CSS {
+    width: 80%;
+    margin-top: 10px;
+    margin-left:10%;
+  }
+  
 }
