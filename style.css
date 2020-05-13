@@ -24,6 +24,7 @@
   overflow: overlay;
   animation: FadeIn 200ms;
   transition: 200ms;
+  overflow: none;
 }
 ::-webkit-scrollbar {
   width: 5px;
@@ -417,7 +418,10 @@
   color: hsl(0, 0%, 98%);
 }
 
-@media (min-width: 0px) and (max-width: 400px){
+@media (min-width: 0px) and (max-width: 375px){
+  .mainCountriesContainer_Div_CSS{
+    width: 100%;
+  }
   .headerLabel_P_CSS {
     font-size: 15px;
     margin-left: 20px;
@@ -453,5 +457,39 @@
     margin-top: 10px;
     margin-left:10%;
   }
-  
+  .countryContainerFullView_Div_CSS{
+    margin-top: 10px;
+    width: 95%;   
+    margin-left: 2.5%; 
+  }
+  .countryBackButtonContainerFullView_Div_CSS{
+    height: 50px;
+  }
+  .countryWholeDetailContainerFullView_Div_CSS{
+    display: block;
+    width: 100%;
+  }
+  .countryDetailContainerFirstChildFullView_Div_CSS{
+    display: block;
+  }
+  .countryDetailContainerSecondChildFullView_Div_CSS{
+    margin-left: auto;
+  }
+  .countryNameFullView_Div_CSS{
+    margin-left: auto;
+  }
+  .countryDetailContainerFirstChild_1_FullView_Div_CSS{
+    margin-left: auto;
+  }
+  .countryDetailContainerFirstChild_2_FullView_Div_CSS{
+    margin-left: auto;
+    height: fit-content;
+  }
+  .countryDetailContainerFullView_Div_CSS{
+    margin-left: 15px;
+  }
+  .countryImageFullView_Img_CSS{
+    width: 100%;
+    height: 250px;
+  }
 }
