@@ -217,13 +217,12 @@
   border-top-right-radius: 3px;
 }
 .ListOfAllCountriesContainer_Div_CSS{
-    width: 80%;
+    width: 85%;
     height: 100%;
     margin: auto;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    /* font-size: 20px; */
+    justify-content: space-evenly;    
 }
 
 .countryContainerSmallView_Div_CSS{
