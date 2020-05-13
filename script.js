@@ -41,6 +41,7 @@ function elements() {
   //---------------------------------------------
   countryDetailContainerFirstChildFullView_Div_EL;
   countryDetailContainerFirstChild_1_FullView_Div_EL;
+  countryNameFullView_Div_EL;
   countryNameFullView_P_EL;
   countryNativeNameFullView_P_EL;
   countryPopulationFullView_P_EL;
@@ -285,6 +286,7 @@ function showCountriesFullView() {
     //---------------------------------------------
     countryDetailContainerFirstChildFullView_Div_EL = document.createElement('div');
     countryDetailContainerFirstChild_1_FullView_Div_EL = document.createElement('div');
+    countryNameFullView_Div_EL = document.createElement('div');
     countryNameFullView_P_EL = document.createElement('p');
     countryNativeNameFullView_P_EL = document.createElement('p');
     countryPopulationFullView_P_EL = document.createElement('p');
@@ -328,6 +330,8 @@ function showCountriesFullView() {
     countryDetailContainerFirstChildFullView_Div_EL.classList = `countryDetailContainerFirstChildFullView_Div_CSS`;
     countryDetailContainerFirstChild_1_FullView_Div_EL.id = `countryDetailContainerFirstChild_1_FullView_${currentCountryFullView}_Div_JS`;
     countryDetailContainerFirstChild_1_FullView_Div_EL.classList = `countryDetailContainerFirstChild_1_FullView_Div_CSS`;
+    countryNameFullView_Div_EL.id = `countryNameFullView_${currentCountryFullView}_Div_JS`;
+    countryNameFullView_Div_EL.classList = `countryNameFullView_Div_CSS`;
     countryNameFullView_P_EL.id = `countryNameFullView_${currentCountryFullView}_P_JS`;
     countryNameFullView_P_EL.classList = `countryNameFullView_P_CSS`;
     countryNameFullView_P_EL.textContent = allCounteries[currentCountryFullView].name;
@@ -365,10 +369,11 @@ function showCountriesFullView() {
     countryBackButtonContainerFullView_Div_EL.appendChild(countryBackButtonFullView_P_EL);
     countryContainerFullView_Div_EL.appendChild(countryWholeDetailContainerFullView_Div_EL);
     countryWholeDetailContainerFullView_Div_EL.appendChild(countryImageFullView_Img_EL);
-    countryWholeDetailContainerFullView_Div_EL.appendChild(countryDetailContainerFullView_Div_EL);;
-    countryDetailContainerFullView_Div_EL.appendChild(countryDetailContainerFirstChildFullView_Div_EL);
-    countryDetailContainerFirstChildFullView_Div_EL.appendChild(countryDetailContainerFirstChild_1_FullView_Div_EL);
-    countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryNameFullView_P_EL);
+    countryWholeDetailContainerFullView_Div_EL.appendChild(countryDetailContainerFullView_Div_EL);
+    countryDetailContainerFullView_Div_EL.appendChild(countryNameFullView_Div_EL);
+    countryDetailContainerFullView_Div_EL.appendChild(countryDetailContainerFirstChildFullView_Div_EL);    
+    countryDetailContainerFirstChildFullView_Div_EL.appendChild(countryDetailContainerFirstChild_1_FullView_Div_EL);    
+    countryNameFullView_Div_EL.appendChild(countryNameFullView_P_EL);
     countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryNativeNameFullView_P_EL);
     countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryPopulationFullView_P_EL);
     countryDetailContainerFirstChild_1_FullView_Div_EL.appendChild(countryRegionFullView_P_EL);

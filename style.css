@@ -164,6 +164,7 @@
   border-radius: 3px;
   transition: 200ms;
   font-size: 14px;
+  font-weight: 600;
 }
 .allRegoinSymbol_CSS {
   margin-right: 15px;
@@ -305,12 +306,11 @@
 }
 .countryDetailContainerFirstChildFullView_Div_CSS {
   display: flex;
-  align-items: flex-end;
-  margin-top: 40px;
+  align-items: flex-end;  
 }
 .countryDetailContainerFirstChild_1_FullView_Div_CSS {
   margin-left: 80px;
-  height: 200px;
+  height: fit-content
 }
 .countryDetailContainerFirstChild_2_FullView_Div_CSS {
   margin-left: 130px;
@@ -325,6 +325,8 @@
   width: fit-content;
   padding: 7px 25px;
   border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
 }
 .countryBackButtonFullView_P_lightMode_CSS {
   background-color: hsl(0, 0%, 98%);
@@ -350,8 +352,12 @@
   object-fit: cover;
   border-radius: 3px;
 }
+.countryNameFullView_Div_CSS{
+  margin-top: 30px;
+  margin-left: 80px;
+}
 .countryNameFullView_P_CSS {
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 800;
 }
 
