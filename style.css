@@ -105,11 +105,10 @@
 }
 .searchCountries_Input_CSS{
     width: 300px;
-    height: 40px;
-    margin-left: 105px;
+    height: 40px;    
     border-radius: 3px;
     border: none;
-    text-indent: 30px;   
+    text-indent: 40px;   
     transition: 200ms; 
 }
 .searchCountries_Input_lightMode_CSS{
@@ -327,21 +326,21 @@
 }
 .countryBackButtonFullView_P_lightMode_CSS{
   background-color:hsl(207, 26%, 17%);
-  background-color: hsl(0, 0%, 100%);
+  background-color: hsl(0, 0%, 98%);
   border: 0.5px solid rgb(150, 150, 150);
 }
 .countryBackButtonFullView_P_lightMode_CSS:hover{
   cursor: pointer;
-  background-color: hsl(0, 0%, 98%);
+  background-color: hsl(0, 0%, 100%);
 }
 .countryBackButtonFullView_P_darkMode_CSS{  
   color: hsl(0, 0%, 98%);
-  background-color: hsl(209, 23%, 22%);
+  background-color:hsl(207, 26%, 17%);
   border: 0.5px solid hsl(208, 19%, 26%); 
 }
 .countryBackButtonFullView_P_darkMode_CSS:hover{
   cursor: pointer;
-  background-color:hsl(207, 26%, 17%);
+  background-color: hsl(209, 23%, 22%);
 }
 
 .countryImageFullView_Img_CSS{
@@ -371,4 +370,42 @@
   border-radius: 3px;
   width:fit-content;
   border: 0.5px solid rgb(150, 150, 150);
+}
+.titlesBold_lightMode_CSS{
+  background-color: hsl(0, 0%, 98%);
+  border: 0.5px solid rgb(150, 150, 150);
+}
+.titlesBold_lightMode_CSS:hover{
+  background-color: hsl(0, 0%, 100%);
+  cursor: pointer;
+}
+.titlesBold_darkMode_CSS{
+  background-color:hsl(207, 26%, 17%);  
+}
+.titlesBold_darkMode_CSS:hover{
+  cursor: pointer;
+  background-color: hsl(209, 23%, 22%);
+}
+.searchCountriesInput_Div_CSS{
+  margin-left: 120px;
+  width: 300px;
+  height: fit-content;
+}
+.searchCountriesInput_Div_lightMode_CSS{
+  color: black;
+}
+.searchCountriesInput_Div_darkMode_CSS{
+  color: white;
+}
+.searchIcon_CSS{
+  position: absolute;
+  z-index: 1000;  
+  margin-top: 13px;
+  margin-left: 15px;
+}
+.searchIcon_lightMode_CSS{
+  color: black;
+}
+.searchIcon_darkMode_CSS{
+  color: hsl(0, 0%, 98%);
 }
