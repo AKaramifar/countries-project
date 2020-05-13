@@ -47,7 +47,7 @@
 .headerContainer_Div_CSS {
   width: 100%;
   height: 80px;
-  margin-top: 0px;
+  margin-top: -10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -56,28 +56,30 @@
 }
 .headerContainer_Div_lightMode_CSS {
   background-color: hsl(0, 0%, 100%);
-  box-shadow: 0px 0px 3px 1px rgb(148, 148, 148);
+  box-shadow: 0px 0px 2px 0px rgba(153,153,153,0.7);
 }
 
 .headerContainer_Div_darkMode_CSS {
   background-color: hsl(209, 23%, 22%);
-  box-shadow: 0px 0px 3px rgb(37, 37, 37);
+  box-shadow: 0px 0px 2px 0px rgba(11,15,18,1);
 }
 .headerLabel_P_CSS {  
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bolder;
+  letter-spacing: 1px;
   margin-left: 100px;
   transition: 200ms;
 }
 .headerLabel_P_lightMode_CSS{
-  color: hsl(200, 15%, 8%);
+  color: hsl(200, 15%, 8%)
 }
 .headerLabel_P_darkMode_CSS{
   color: hsl(0, 0%, 100%);
 }
 .darkMode_P_CSS {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
+  letter-spacing: 1px;
   margin-right: 120px;
   transition: 200ms;
 }
@@ -94,7 +96,7 @@
 .mainCountriesContainer_Div_CSS {
   width: 100%;
   height: 100%;
-  transition: 200ms;
+  transition: 200ms;  
 }
 .findCountriesTools_Div_CSS{
     width: 100%;
@@ -114,12 +116,12 @@
 .searchCountries_Input_lightMode_CSS{
   background-color: hsl(0, 0%, 100%); 
   color: hsl(200, 15%, 8%); 
-  box-shadow: 0px 0px 3px 0.1px rgb(192, 192, 192);
+  box-shadow: 0px 0px 2px 0px rgba(153,153,153,0.7);
 }
 .searchCountries_Input_darkMode_CSS{
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%); 
-  box-shadow: 0px 0px 3px 0.1px rgb(37, 37, 37);
+  box-shadow: 0px 0px 2px 0px rgba(11,15,18,1);
 }
 .countriesRegoin_Div_CSS{
     width: 170px;
@@ -136,7 +138,7 @@
 .countriesRegoin_Div_lightMode_CSS{
   background-color: hsl(0, 0%, 100%); 
   color: hsl(200, 15%, 8%); 
-  box-shadow: 0px 0px 3px 0.1px rgb(192, 192, 192);
+  box-shadow: 0px 0px 2px 0px rgba(153,153,153,0.7);
 }
 .countriesRegoin_Div_lightMode_CSS:hover{
   background-color: hsl(0, 0%, 98%);
@@ -145,7 +147,7 @@
 .countriesRegoin_Div_darkMode_CSS{
   background-color: hsl(209, 23%, 22%);
   color: hsl(0, 0%, 100%);
-  box-shadow: 0px 0px 3px 0.1px rgb(37, 37, 37);
+  box-shadow: 0px 0px 2px 0px rgba(11,15,18,1);
 }
 .countriesRegoin_Div_darkMode_CSS:hover{
   background-color: hsl(209, 18%, 29%);
@@ -160,20 +162,24 @@
   width: 100%;
   height: 40px;
   border-radius: 3px;
-  transition: width 200ms;
+  transition: 200ms;
+  font-size: 14px;
 }
 .allRegoinSymbol_CSS {
-  margin-right: 10px;
+  margin-right: 15px;
   margin-bottom: 7px;
+  font-size: 15px;
 }
 .countriesRegoin_P_CSS{
   margin: 0px;  
   width: 100%;
   text-indent: 15px;
-  padding: 10px;
-  height: 25px;
+  padding: 5px;
+  height: 20px;
   display: none;
   z-index: 1000;
+  transition: 200ms;
+  font-size: 14px;
 }
 .countriesRegoin_P_lightMode_CSS{
   border-left: 0.5px solid rgb(224, 224, 224);
@@ -188,7 +194,7 @@
 }
 .countriesRegoin_P_darkMode_CSS{
   border-left: 0.5px solid  rgb(37, 37, 37);
-  border-right: 0.5px solid  rgb(37, 37, 37);
+  border-right: 0.5px solid  rgb(37, 37, 37);  
   background-color: hsl(209, 23%, 22%);  
 }
 .countriesRegoin_P_darkMode_CSS:last-child{
@@ -217,11 +223,11 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    font-size: 10px;
+    /* font-size: 20px; */
 }
 
 .countryContainerSmallView_Div_CSS{
-    width:220px;
+    width:230px;
     height: 290px;
     margin: 25px 25px 25px 25px;
     border-radius: 3px;
@@ -229,7 +235,7 @@
     transition: 200ms;
 }
 .countryContainerSmallView_Div_CSS:hover{
-  transform: scale(1.08);
+  transform: scale(1.05);
   cursor: pointer;
 }
 .countryContainerSmallView_Div_lightMode_CSS{
@@ -241,7 +247,7 @@
   color: hsl(0, 0%, 100%);
 }
 .countryImageSmallView_Img_CSS{
-    width: 220px;
+    width: 230px;
     height: 150px;
     object-fit: cover;
     border-top-left-radius: 3px;
@@ -256,35 +262,33 @@
 .countryPopulationSmallView_P_CSS{
   font-size: 12px;
     margin: 5px 5px 5px 15px;
-    font-weight: 400;
+    font-weight: 300;
 }
 .countryRegionSmallView_P_CSS{
   font-size: 12px;
     margin: 5px 5px 5px 15px;
-    font-weight: 400;
+    font-weight: 300;
 }
 .countryCapitaSmallView_P_CSS{
   font-size: 12px;
     margin: 5px 5px 5px 15px;
-    font-weight: 500;
+    font-weight: 300;
 }
 .textSmallView_CSS{
     font-weight: 600; 
 }
-
 /* ----------------------------------------------------------------------- */
 .countryContainerFullView_Div_CSS{
   animation: FadeIn 200ms;
   width: 80%;
-  height: fit-content;
-  /* background-color: cadetblue; */
-  margin: 70px auto;
+  height: fit-content;  
+  margin: 50px auto;
 }
 .countryContainerFullView_Div_lightMode_CSS{
-  color: black;
+  color: hsl(200, 15%, 8%);
 }
 .countryContainerFullView_Div_darkMode_CSS{
-  color: white;
+  color: hsl(0, 0%, 100%)
 }
 .countryWholeDetailContainerFullView_Div_CSS{
   display: flex;
@@ -292,13 +296,13 @@
   font-weight: 300;
 }
 .countryBackButtonContainerFullView_Div_CSS{
-  height: 100px;
+  height: 80px;
 }
 .countryBackButtonContainerFullView_Div_lightMode_CSS{
-  color: black;
+  color: hsl(200, 15%, 8%);
 }
 .countryBackButtonContainerFullView_Div_darkMode_CSS{
-  color: rgb(255, 255, 255);
+  color: hsl(0, 0%, 100%)
 }
 .countryDetailContainerFirstChildFullView_Div_CSS{
   display: flex;
@@ -316,7 +320,6 @@
 .countryDetailContainerSecondChildFullView_Div_CSS{  
   margin-left: 80px;
 }
-
 .countryBackButtonFullView_P_CSS{
   display: flex;
   align-items: center;
@@ -325,9 +328,8 @@
   border-radius: 3px;
 }
 .countryBackButtonFullView_P_lightMode_CSS{
-  background-color:hsl(207, 26%, 17%);
   background-color: hsl(0, 0%, 98%);
-  border: 0.5px solid rgb(150, 150, 150);
+  box-shadow: 0px 0px 2px 0px rgba(153,153,153,0.7);
 }
 .countryBackButtonFullView_P_lightMode_CSS:hover{
   cursor: pointer;
@@ -336,7 +338,7 @@
 .countryBackButtonFullView_P_darkMode_CSS{  
   color: hsl(0, 0%, 98%);
   background-color:hsl(207, 26%, 17%);
-  border: 0.5px solid hsl(208, 19%, 26%); 
+  box-shadow: 0px 0px 2px 0px rgba(11,15,18,1);
 }
 .countryBackButtonFullView_P_darkMode_CSS:hover{
   cursor: pointer;
@@ -368,12 +370,11 @@
   margin-left: 5px;
   padding: 3px 5px 3px 5px;
   border-radius: 3px;
-  width:fit-content;
-  border: 0.5px solid rgb(150, 150, 150);
+  width:fit-content;  
 }
 .titlesBold_lightMode_CSS{
   background-color: hsl(0, 0%, 98%);
-  border: 0.5px solid rgb(150, 150, 150);
+  box-shadow: 0px 0px 2px 0px rgba(153,153,153,0.7);
 }
 .titlesBold_lightMode_CSS:hover{
   background-color: hsl(0, 0%, 100%);
@@ -381,6 +382,7 @@
 }
 .titlesBold_darkMode_CSS{
   background-color:hsl(207, 26%, 17%);  
+  box-shadow: 0px 0px 2px 0px rgba(11,15,18,1);
 }
 .titlesBold_darkMode_CSS:hover{
   cursor: pointer;
@@ -392,10 +394,10 @@
   height: fit-content;
 }
 .searchCountriesInput_Div_lightMode_CSS{
-  color: black;
+  color: hsl(0, 0%, 52%);
 }
 .searchCountriesInput_Div_darkMode_CSS{
-  color: white;
+  color: hsl(0, 0%, 100%)
 }
 .searchIcon_CSS{
   position: absolute;
@@ -404,7 +406,7 @@
   margin-left: 15px;
 }
 .searchIcon_lightMode_CSS{
-  color: black;
+  color: hsl(200, 15%, 8%);
 }
 .searchIcon_darkMode_CSS{
   color: hsl(0, 0%, 98%);

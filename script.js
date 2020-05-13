@@ -280,24 +280,24 @@ function showCountriesFullView() {
     countryBackButtonFullView_P_EL = document.createElement('p');
     //---------------------------------------------
     countryWholeDetailContainerFullView_Div_EL = document.createElement('div');
-      countryImageFullView_Img_EL = document.createElement('img');
-      countryDetailContainerFullView_Div_EL = document.createElement('div');
-        //---------------------------------------------
-        countryDetailContainerFirstChildFullView_Div_EL = document.createElement('div');
-          countryDetailContainerFirstChild_1_FullView_Div_EL = document.createElement('div');
-            countryNameFullView_P_EL = document.createElement('p');
-            countryNativeNameFullView_P_EL = document.createElement('p');
-            countryPopulationFullView_P_EL = document.createElement('p');
-            countryRegionFullView_P_EL = document.createElement('p');
-            countrySubRegionFullView_P_EL = document.createElement('p');
-            countryCapitaFullView_P_EL = document.createElement('p');
-          countryDetailContainerFirstChild_2_FullView_Div_EL = document.createElement('div');
-            countryTopLevelDomainFullView_P_EL = document.createElement('p');
-            countryCurrenciesFullView_P_EL = document.createElement('p');
-            countryLanguageFullView_P_EL = document.createElement('p');
-        //---------------------------------------------
-        countryDetailContainerSecondChildFullView_Div_EL = document.createElement('div');
-          countryBorderCountriesFullView_P_EL = document.createElement('p');
+    countryImageFullView_Img_EL = document.createElement('img');
+    countryDetailContainerFullView_Div_EL = document.createElement('div');
+    //---------------------------------------------
+    countryDetailContainerFirstChildFullView_Div_EL = document.createElement('div');
+    countryDetailContainerFirstChild_1_FullView_Div_EL = document.createElement('div');
+    countryNameFullView_P_EL = document.createElement('p');
+    countryNativeNameFullView_P_EL = document.createElement('p');
+    countryPopulationFullView_P_EL = document.createElement('p');
+    countryRegionFullView_P_EL = document.createElement('p');
+    countrySubRegionFullView_P_EL = document.createElement('p');
+    countryCapitaFullView_P_EL = document.createElement('p');
+    countryDetailContainerFirstChild_2_FullView_Div_EL = document.createElement('div');
+    countryTopLevelDomainFullView_P_EL = document.createElement('p');
+    countryCurrenciesFullView_P_EL = document.createElement('p');
+    countryLanguageFullView_P_EL = document.createElement('p');
+    //---------------------------------------------
+    countryDetailContainerSecondChildFullView_Div_EL = document.createElement('div');
+    countryBorderCountriesFullView_P_EL = document.createElement('p');
     // ----------------------------------------------------------------------------------  
     countryContainerFullView_Div_EL.id = `countryContainerFullView_${currentCountryFullView}_Div_JS`;
     countryContainerFullView_Div_EL.classList = `countryContainerFullView_Div_CSS ${(themMode == 'Dark Mode') ? 'countryContainerFullView_Div_darkMode_CSS' : 'countryContainerFullView_Div_lightMode_CSS'}`;
@@ -306,7 +306,7 @@ function showCountriesFullView() {
     countryBackButtonContainerFullView_Div_EL.classList = `countryBackButtonContainerFullView_Div_CSS`;
     countryBackButtonFullView_P_EL.id = `countryBackButtonFullView_${currentCountryFullView}_P_JS`;
     countryBackButtonFullView_P_EL.classList = `countryBackButtonFullView_P_CSS ${(themMode == 'Dark Mode') ? 'countryBackButtonFullView_P_darkMode_CSS' : 'countryBackButtonFullView_P_lightMode_CSS'}`;      
-    countryBackButtonFullView_P_EL.innerHTML = `<i class="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;Back`;
+    countryBackButtonFullView_P_EL.innerHTML = `<i class="fas fa-long-arrow-alt-left"></i>&nbsp;&nbsp;&nbsp;&nbsp;Back`;
     countryBackButtonFullView_P_EL.addEventListener('click', ()=>{  
       setTimeout(()=> {          
         countryContainerFullView_Div_EL.parentNode.removeChild(countryContainerFullView_Div_EL);
