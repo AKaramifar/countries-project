@@ -418,7 +418,7 @@
   color: hsl(0, 0%, 98%);
 }
 
-@media (min-width: 0px) and (max-width: 375px){
+@media (min-width: 0px) and (max-width: 698px){
   .mainCountriesContainer_Div_CSS{
     width: 100%;
   }
