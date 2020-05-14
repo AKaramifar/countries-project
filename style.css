@@ -266,7 +266,7 @@
   margin: 25px 25px 25px 25px;
   border-radius: 3px;
   animation: FadeIn 200ms;
-  transition: 200ms;
+  transition: 200ms;  
 }
 .countryContainerSmallView_Div_CSS:hover {
   transform: scale(1.05);
@@ -275,6 +275,7 @@
 .countryContainerSmallView_Div_lightMode_CSS {
   background-color: hsl(0, 0%, 100%);
   color: hsl(200, 15%, 8%);
+  box-shadow: 0px 3px 20px #dcdcdc;
 }
 .countryContainerSmallView_Div_darkMode_CSS {
   background-color: hsl(209, 23%, 22%);
