@@ -81,12 +81,14 @@
 .headerContainer_Div_CSS {
   width: 100%;
   height: 80px;
-  margin-top: -10px;
+  top: 0px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   animation: FadeIn 200ms;
   transition: 200ms;
+  position: fixed;
+  z-index: 2;
 }
 .headerContainer_Div_lightMode_CSS {
   background-color: hsl(0, 0%, 100%);
@@ -129,7 +131,8 @@
 /* -------------------------------------------- */
 .mainCountriesContainer_Div_CSS {
   width: 100%;
-  height: 100%;
+  height: fit-content;
+  margin-top: 81px;
   transition: 200ms;
 }
 .findCountriesTools_Div_CSS {
@@ -137,7 +140,7 @@
   height: 100px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: center;  
 }
 .searchCountries_Input_CSS {
   width: 300px;
@@ -212,7 +215,7 @@
   padding: 5px;
   height: 20px;
   display: none;
-  z-index: 1000;
+  z-index: 1;
   transition: 200ms;
   font-size: 14px;
 }
@@ -267,6 +270,7 @@
   border-radius: 3px;
   animation: FadeIn 200ms;
   transition: 200ms;  
+  z-index: 0;
 }
 .countryContainerSmallView_Div_CSS:hover {
   transform: scale(1.05);
@@ -332,6 +336,7 @@
 }
 .countryBackButtonContainerFullView_Div_CSS {
   height: 80px;
+  margin-top: 120px;
 }
 .countryBackButtonContainerFullView_Div_lightMode_CSS {
   color: hsl(200, 15%, 8%);
@@ -441,7 +446,7 @@
 }
 .searchIcon_CSS {
   position: absolute;
-  z-index: 1000;
+  z-index: 1;
   margin-top: 13px;
   margin-left: 15px;
 }
@@ -471,6 +476,7 @@
     display: block;
     justify-content: space-between;
     align-items: center;
+    margin-top: 101px;
   }
   .searchCountriesInput_Div_CSS {
     margin-top: 25px;
@@ -498,6 +504,7 @@
   }
   .countryBackButtonContainerFullView_Div_CSS{
     height: 50px;
+    margin-top: 100px;
   }
   .countryWholeDetailContainerFullView_Div_CSS{
     display: block;
